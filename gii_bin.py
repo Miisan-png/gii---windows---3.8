@@ -1,6 +1,7 @@
 ##----------------------------------------------------------------##
 #find gii library
 import os
+os.environ['QT_API'] = 'pyqt5'
 import os.path
 import platform
 import sys

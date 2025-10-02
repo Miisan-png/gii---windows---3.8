@@ -14,7 +14,12 @@ def _getModulePath( path ):
 	import os.path
 	return os.path.dirname( __file__ ) + '/' + path
 
-ColorPickerForm,BaseClass = uic.loadUiType( _getModulePath('ColorPicker.ui') )
+from qtpy import uic as qtpy_uic
+from PyQt5 import uic as pyqt5_uic
+try:
+    ColorPickerForm,BaseClass = qtpy_uic.loadUiType( _getModulePath('ColorPicker.ui') )
+except AttributeError:
+    ColorPickerForm,BaseClass = pyqt5_uic.loadUiType( _getModulePath('ColorPicker.ui') )
 
 def requestConfirm(title, msg, level='normal'):
 	f = None
